@@ -1,5 +1,6 @@
 
 package States;
+import ElementosDelJuego.Sonido;
 import riverraid.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -18,23 +19,28 @@ import riverraid.Game;
 public class InstructionState extends State{
     Game world;
     
+    Sonido teclas;
+    
     ImageIcon fond;
     ImageIcon volver;
     ImageIcon volver1;
     ImageIcon fondAyuda;
+    ImageIcon botonNext;
+    ImageIcon botonNext1;
     
     JLabel comoJugarB;
     ImageIcon comoJugar;
     
     JLabel volverB;
     JLabel fondAyudaB;
+    JLabel botonNextB;
     JLabel fondContainer;
-    JLabel Titulo = new JLabel("Como Jugar!");
     
     /** Constructor que recibe la variable de la clase Game para el cambio de menus*/
     public InstructionState(Game world) {
         this.world=world;
         this.setVisible(true);
+        teclas = new Sonido();
         onEnter();
     }
     
@@ -44,6 +50,7 @@ public class InstructionState extends State{
     public void onEnter() {
         
         volverB = new JLabel();
+        botonNextB = new JLabel();
         fondAyudaB = new JLabel();
         comoJugarB = new JLabel();
         fondContainer = new JLabel();        
@@ -54,6 +61,9 @@ public class InstructionState extends State{
             volver = new ImageIcon(ImageIO.read(new File("src/inicio/volver.png")));
             fond = new ImageIcon(ImageIO.read(new File("src/inicio/fondito.png")));
             volver1 = new ImageIcon(ImageIO.read(new File("src/inicio/volver1.png")));
+            botonNext = new ImageIcon(ImageIO.read(new File("src/inicio/botonN.png")));
+            botonNext1 = new ImageIcon(ImageIO.read(new File("src/inicio/botonN1.png")));
+            
         } catch (IOException ex) {
             Logger.getLogger(InstructionState.class.getName()).log(Level.SEVERE, null, ex);
        
@@ -81,16 +91,27 @@ public class InstructionState extends State{
         volverB.setIcon(volver);
         volverB.setName("v");
         volverB.setSize(volver.getIconWidth(),volver.getIconHeight());
-        volverB.setLocation(Ventana.width / 2 - volver.getIconWidth() / 2, 600);
+        volverB.setLocation(Ventana.width / 3 - volver.getIconWidth(), 600);
         volverB.setFocusable(false);
         volverB.setVisible(true);
         volverB.addMouseListener(new ActionClick());
         
+        botonNextB.setIcon(botonNext);
+        botonNextB.setName("n");
+        botonNextB.setSize(botonNext.getIconWidth(),botonNext.getIconHeight());
+        botonNextB.setLocation(Ventana.width / 2 + botonNext.getIconWidth() , 600);
+        botonNextB.setFocusable(false);
+        botonNextB.setVisible(true);
+        botonNextB.addMouseListener(new ActionClick());
+        
         super.add(comoJugarB);
         super.add(volverB);
+        super.add(botonNextB);
         super.add(fondAyudaB);
         super.add(fondContainer);
+        super.setLayout(null);
         super.setLocation(0, 0);
+        super.setFocusable(false);
         super.setSize(Ventana.width, Ventana.heigth);
         super.setVisible(true);
     }
@@ -107,7 +128,10 @@ public class InstructionState extends State{
         public void mousePressed(MouseEvent e) {
             if(e.getComponent().getName().equals("v")){ //iniciar partida
                 world.VolverIns();
-            } 
+            }
+            if(e.getComponent().getName().equals("n")){
+                world.NextIns();
+            }
         }
 
         @Override
@@ -121,10 +145,19 @@ public class InstructionState extends State{
             if(e.getComponent().getName().equals("v")){
                 volverB.setIcon(volver1);
                 volverB.setSize(volver1.getIconWidth(),volver1.getIconHeight());
-                volverB.setLocation(Ventana.width / 2 - volver1.getIconWidth() / 2, 600);
+                volverB.setLocation(Ventana.width / 3 - volver1.getIconWidth(), 600);
                 volverB.setFocusable(false);
                 volverB.setVisible(true);
-            }        
+                teclas.Boton();
+            }  
+            if(e.getComponent().getName().equals("n")){
+                botonNextB.setIcon(botonNext1);
+                botonNextB.setSize(botonNext1.getIconWidth(),botonNext1.getIconHeight());
+                botonNextB.setLocation(Ventana.width / 2 + botonNext1.getIconWidth() , 600);
+                botonNextB.setFocusable(false);
+                botonNextB.setVisible(true);
+                teclas.Boton();
+            }
         }
 
         @Override
@@ -133,18 +166,17 @@ public class InstructionState extends State{
             if(e.getComponent().getName().equals("v")){
                 volverB.setIcon(volver);
                 volverB.setSize(volver.getIconWidth(),volver.getIconHeight());
-                volverB.setLocation(Ventana.width / 2 - volver.getIconWidth() / 2, 600);
+                volverB.setLocation(Ventana.width / 3 - volver.getIconWidth(), 600);
                 volverB.setFocusable(false);
                 volverB.setVisible(true);
-            }         
+            }       
+            if(e.getComponent().getName().equals("n")){
+                botonNextB.setIcon(botonNext);
+                botonNextB.setSize(botonNext.getIconWidth(),botonNext.getIconHeight());
+                botonNextB.setLocation(Ventana.width / 2 + botonNext.getIconWidth() , 600);
+                botonNextB.setFocusable(false);
+                botonNextB.setVisible(true);
+            }
         }
-        
-    }
-    private static void goMenuInitial() throws MalformedURLException{
-        //Game.instance().getContentPane().remove(0);
-        //MenuInitialState e = new MenuInitialState();
-        //Game.instance().getContentPane().add(e,0);
-        //Game.instance().setVisible(true);
-       
     }
 }
