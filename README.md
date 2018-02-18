@@ -10,7 +10,7 @@ Juego Realizado para un proyecto de la UNET (Universidad Nacional Experimental d
 </ul>
 
 <h3>Algunas Capturas del Juego!</h3>
-  ![alt text](github/Img-1.jpg)
+  ![Alt text](github/Img-1.jpg)
   <p><img src="github/Img-1.jpg title="Intro del Juego" style="max-width:100%"></p>
   <p><img src="chjesus/RiverRaidUnet/raw/master/github/Img-2.jpg title="Menu del Juego" style="max-width:100%"></p>
   <p><img src="chjesus/RiverRaidUnet/raw/master/github/Img-2.jpg title="Vista del Juego" style="max-width:100%"></p>
