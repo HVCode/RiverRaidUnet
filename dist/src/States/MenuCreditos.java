@@ -1,10 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package States;
 
+import ElementosDelJuego.Sonido;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
@@ -19,6 +16,9 @@ import riverraid.Ventana;
 
 public class MenuCreditos extends State{
     Game world;
+    
+    Sonido teclas;
+    
     ImageIcon fond;
     ImageIcon volver;
     ImageIcon volver1;
@@ -29,10 +29,12 @@ public class MenuCreditos extends State{
     JLabel titCreditosB;
     JLabel fondCreditosB;
     JLabel fondContainer;
+    
     /** Evento cuand posiciona el mouse fuera del boton retorna la imagen incial del boton*/
     public MenuCreditos(Game world) {
         this.world=world;
         this.setVisible(true);
+        teclas= new Sonido();
         onEnter();
     }
 
@@ -64,13 +66,13 @@ public class MenuCreditos extends State{
         
         titCreditosB.setIcon(titCreditos);
         titCreditosB.setSize(titCreditos.getIconWidth(),titCreditos.getIconHeight());
-        titCreditosB.setLocation(Ventana.width / 2 +230 - titCreditos.getIconWidth() / 2 ,20);
+        titCreditosB.setLocation(Ventana.width / 2 - titCreditos.getIconWidth() / 2 ,20);
         titCreditosB.setFocusable(false);
         titCreditosB.setVisible(true);
         
         fondCreditosB.setIcon(fondCreditos);
         fondCreditosB.setSize(fondCreditos.getIconWidth(),fondCreditos.getIconHeight());
-        fondCreditosB.setLocation(Ventana.width / 2 - titCreditos.getIconWidth() / 2 ,10);
+        fondCreditosB.setLocation(Ventana.width - fondCreditos.getIconWidth() ,10);
         fondCreditosB.setFocusable(false);
         fondCreditosB.setVisible(true);  
         
@@ -86,10 +88,11 @@ public class MenuCreditos extends State{
         super.add(titCreditosB);
         super.add(fondCreditosB);
         super.add(fondContainer);
+        super.setLayout(null);
         super.setLocation(0,0);
+        super.setFocusable(false);
         super.setSize(Ventana.width, Ventana.heigth);
         super.setVisible(true);
-        
     }
     /** clase para que implementa el evento mouseListener para los botones*/
     class ActionClick implements MouseListener{
@@ -121,6 +124,7 @@ public class MenuCreditos extends State{
                 volverB.setLocation(Ventana.width / 2 - volver1.getIconWidth() / 2, 600);
                 volverB.setFocusable(false);
                 volverB.setVisible(true);
+                teclas.Boton();
             } 
         }
 

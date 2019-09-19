@@ -193,7 +193,7 @@ public class MenuInitialState extends State implements Ventana{
                 iniciarBTN.setSize(iniciar1.getIconWidth(), iniciar1.getIconHeight());
                 iniciarBTN.setFocusable(false);
                 iniciarBTN.setVisible(true);
-                 teclas.Boton();
+                teclas.Boton();
             }
             if(e.getComponent().getName().equals("a")){
                 aiudaBTN.setIcon(aiuda1);
@@ -201,7 +201,7 @@ public class MenuInitialState extends State implements Ventana{
                 aiudaBTN.setSize(aiuda1.getIconWidth(), aiuda1.getIconHeight());
                 aiudaBTN.setFocusable(false);
                 aiudaBTN.setVisible(true);
-                 teclas.Boton();
+                teclas.Boton();
             }
             if(e.getComponent().getName().equals("r")){
                 creditosBTM.setIcon(creditos1);

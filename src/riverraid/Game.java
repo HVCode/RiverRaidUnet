@@ -4,6 +4,7 @@ package riverraid;
 import ElementosDelJuego.*;
 import States.GameState;
 import States.InstructionState;
+import States.InstructionState2;
 import States.MenuCreditos;
 import States.MenuInitialState;
 import States.MenuSecundaryState;
@@ -30,6 +31,7 @@ public class Game extends JFrame implements Ventana{
     MenuTop10State top;
     MenuSecundaryState menu;
     InstructionState inst;
+    InstructionState2 inst2;
     MenuCreditos menuCreditos;
     GameState nuevoJuego;
     Sonido fondo;
@@ -82,6 +84,20 @@ public class Game extends JFrame implements Ventana{
         men = new MenuInitialState(this);
         getContentPane().remove(inst);
         super.getContentPane().add(men);
+        repaint();
+    }
+    /** Meotodo que genera menu de instrucciones 2*/
+    public void NextIns(){
+        inst2 = new InstructionState2(this);
+        getContentPane().remove(inst);
+        super.getContentPane().add(inst2);
+        repaint();
+    }
+    /** Metodo que retorna al menu instrucciones 1*/
+    public void NextInsV(){
+        inst = new InstructionState(this);
+        getContentPane().remove(inst2);
+        super.getContentPane().add(inst);
         repaint();
     }
     /** Meotodo que genera menu de creditos*/

@@ -1,6 +1,7 @@
 
 package States;
 
+import ElementosDelJuego.Sonido;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseEvent;
@@ -34,6 +35,8 @@ public class MenuTop10State extends State{
     
     Game world;
     
+    Sonido teclas;
+    
     JLabel tituloB;
     JLabel volverB;
     JLabel fonditoConteiner  = new JLabel();
@@ -55,6 +58,7 @@ public class MenuTop10State extends State{
      de cargar, ordernar*/
     public MenuTop10State(Game world){
         this.world=world;
+        teclas = new Sonido();
         CargarScore();
         OrdernarTop();
         TituloF();
@@ -183,7 +187,7 @@ public class MenuTop10State extends State{
         
         tituloB.setIcon(titulo);
         tituloB.setSize(titulo.getIconWidth(), titulo.getIconHeight());
-        tituloB.setLocation(Ventana.width / 2 +230- titulo.getIconWidth() / 2 ,20);
+        tituloB.setLocation(Ventana.width / 2 - titulo.getIconWidth() / 2 ,20);
         tituloB.setFocusable(false);
         tituloB.setVisible(true);
         
@@ -234,6 +238,7 @@ public class MenuTop10State extends State{
                 volverB.setLocation(Ventana.width / 2 - volver.getIconWidth() / 2, 600);
                 volverB.setFocusable(false);
                 volverB.setVisible(true);
+                teclas.Boton();
             }
         }
 

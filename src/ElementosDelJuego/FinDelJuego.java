@@ -1,5 +1,10 @@
 package ElementosDelJuego;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -11,17 +16,24 @@ import riverraid.Ventana;
 public class FinDelJuego extends JPanel{
     
     private JButton continuar;
-   JLabel img;
-    
+    JLabel img;
+    ImageIcon continuarButton;
     /**construcor por defecto que inicializa algunos componentes y los agrega*/
     public FinDelJuego() {
         setLayout(null);
         setOpaque(false);
+        try {
+            continuarButton = new ImageIcon(ImageIO.read(new File("src/FondoMenuPause/Continuar.png")));
+        } catch (IOException ex) {
+            Logger.getLogger(FinDelJuego.class.getName()).log(Level.SEVERE, null, ex);
+        }
         img = new JLabel(new ImageIcon("src/FondoMenuPause/Menu1.png"));
-        img.setBounds(0,0,200,200);
-        continuar = new JButton("Continuar");
-        setBounds(Ventana.width/2 - 100, 250,200, 190);
-        continuar.setBounds(50,90,100,20);
+        
+        img.setBounds(0,0,450,200);
+        continuar = new JButton();
+        setBounds(Ventana.width / 2 - img.getWidth() / 2, 250,450, 190);
+        continuar.setBounds(Ventana.width / 4 - ((img.getWidth() / 6) + 25),120,150,50);
+        continuar.setIcon(continuarButton);
         continuar.setOpaque(false);
         add(continuar);
         add(img);
@@ -31,7 +43,4 @@ public class FinDelJuego extends JPanel{
     public JButton getContinuar(){
         return continuar;
     }
-    
-    
-    
 }
